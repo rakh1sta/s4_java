@@ -24,6 +24,10 @@ public class Department {
     @OneToMany(mappedBy = "department", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Student> students = new ArrayList<>();
 
+    public Department(String name) {
+        this.name = name;
+    }
+
     @Override
     public boolean equals(Object object) {
         if (this == object) return true;

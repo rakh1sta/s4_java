@@ -38,6 +38,9 @@ public class Course {
     )
     private Set<Discipline> disciplines = new HashSet<>();
 
+    public Course(String name) {
+        this.name = name;
+    }
 
     @Override
     public boolean equals(Object object) {

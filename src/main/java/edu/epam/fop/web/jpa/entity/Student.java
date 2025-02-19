@@ -2,6 +2,7 @@ package edu.epam.fop.web.jpa.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.ArrayList;
@@ -12,6 +13,7 @@ import java.util.Objects;
 @Setter
 @Entity
 @Table(name = "student")
+@NoArgsConstructor
 public class Student {
 
     @Id
@@ -34,8 +36,11 @@ public class Student {
     @Transient
     private Double averageGrade;
 
+    public Student(String name) {
+        this.name = name;
+    }
 
-   /* private void updateAverageGrade() {
+    /* private void updateAverageGrade() {
         if (grades.isEmpty()) {
             this.averageGrade = null;
         } else {
