@@ -8,9 +8,9 @@ public class ActivateCourseDemo {
 
         CourseRepository courseRepository = new CourseRepository();
 
-//        Long id = Long.valueOf(args[0]);
+        Long id = Long.valueOf(args[0]);
 
-        Long id = 1L;
+//        Long id = 1L;
         System.out.print(courseRepository.deactivateCourse(id));
     }
 }

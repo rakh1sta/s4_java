@@ -3,6 +3,8 @@ package edu.epam.fop.web.jpa.repository;
 import edu.epam.fop.web.jpa.entity.Department;
 import edu.epam.fop.web.jpa.entity.Student;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
 
@@ -14,7 +16,8 @@ public class StudentRepository implements JpaRepository<Student, Long> {
 
     @Override
     public EntityManager getEntityManager() {
-        return entityManager;
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("my-persistence-unit");
+        return emf.createEntityManager();
     }
 
     @Override
