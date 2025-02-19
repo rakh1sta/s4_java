@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Getter
 @Setter
@@ -34,7 +35,7 @@ public class Student {
     private Double averageGrade;
 
 
-    private void updateAverageGrade() {
+   /* private void updateAverageGrade() {
         if (grades.isEmpty()) {
             this.averageGrade = null;
         } else {
@@ -48,6 +49,20 @@ public class Student {
             }
             this.averageGrade = count > 0 ? sum / count : null;
         }
+    }*/
+
+
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        Student student = (Student) object;
+        return active == student.active && Objects.equals(id, student.id) && Objects.equals(name, student.name) && Objects.equals(department, student.department) && Objects.equals(grades, student.grades) && Objects.equals(averageGrade, student.averageGrade);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, active, department, grades, averageGrade);
     }
 
     @Override

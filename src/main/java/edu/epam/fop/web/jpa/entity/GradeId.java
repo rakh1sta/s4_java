@@ -19,14 +19,8 @@ public class GradeId implements Serializable {
     @Column(name = "discipline_id")
     private Long disciplineId;
 
-    // Constructors, getters, setters, equals, and hashCode
-
     public GradeId() {}
 
-    public GradeId(Long studentId, Long disciplineId) {
-        this.studentId = studentId;
-        this.disciplineId = disciplineId;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -40,6 +34,14 @@ public class GradeId implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(studentId, disciplineId);
+    }
+
+    @Override
+    public String toString() {
+        return "GradeId{" +
+                "studentId=" + studentId +
+                ", disciplineId=" + disciplineId +
+                '}';
     }
 }
 

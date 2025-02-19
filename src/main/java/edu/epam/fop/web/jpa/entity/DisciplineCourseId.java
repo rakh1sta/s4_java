@@ -19,28 +19,10 @@ public class DisciplineCourseId implements Serializable {
     @Column(name = "discipline_id")
     private Long disciplineId;
 
-    // Constructors, getters, setters, equals, and hashCode
-
     public DisciplineCourseId() {}
 
     public DisciplineCourseId(Long courseId, Long disciplineId) {
         this.courseId = courseId;
-        this.disciplineId = disciplineId;
-    }
-
-    public Long getCourseId() {
-        return courseId;
-    }
-
-    public void setCourseId(Long courseId) {
-        this.courseId = courseId;
-    }
-
-    public Long getDisciplineId() {
-        return disciplineId;
-    }
-
-    public void setDisciplineId(Long disciplineId) {
         this.disciplineId = disciplineId;
     }
 

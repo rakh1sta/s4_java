@@ -6,6 +6,8 @@ import jakarta.validation.constraints.Min;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Objects;
+
 @Getter
 @Setter
 @Entity
@@ -30,6 +32,27 @@ public class Grade {
     @Column(name = "value")
     private Integer value;
 
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        Grade grade = (Grade) object;
+        return Objects.equals(id, grade.id) && Objects.equals(student, grade.student) && Objects.equals(discipline, grade.discipline) && Objects.equals(value, grade.value);
+    }
 
-   }
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, student, discipline, value);
+    }
+
+    @Override
+    public String toString() {
+        return "Grade{" +
+                "id=" + id +
+                ", student=" + student +
+                ", discipline=" + discipline +
+                ", value=" + value +
+                '}';
+    }
+}
 

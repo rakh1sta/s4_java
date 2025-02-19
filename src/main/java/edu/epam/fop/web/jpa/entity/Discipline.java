@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 @Getter
@@ -23,29 +24,17 @@ public class Discipline {
     @ManyToMany(mappedBy = "disciplines")
     private Set<Course> courses = new HashSet<>();
 
-    // Getters and setters
-    public Long getId() {
-        return id;
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        Discipline that = (Discipline) object;
+        return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(courses, that.courses);
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Set<Course> getCourses() {
-        return courses;
-    }
-
-    public void setCourses(Set<Course> courses) {
-        this.courses = courses;
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, courses);
     }
 
     @Override

@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 @Getter
@@ -36,6 +37,20 @@ public class Course {
             inverseJoinColumns = @JoinColumn(name = "discipline_id")
     )
     private Set<Discipline> disciplines = new HashSet<>();
+
+
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        Course course = (Course) object;
+        return active == course.active && Objects.equals(id, course.id) && Objects.equals(name, course.name) && Objects.equals(startAt, course.startAt) && Objects.equals(endAt, course.endAt) && Objects.equals(disciplines, course.disciplines);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, active, startAt, endAt, disciplines);
+    }
 
     @Override
     public String toString() {
