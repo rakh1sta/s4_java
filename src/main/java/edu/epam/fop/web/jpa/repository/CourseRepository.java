@@ -4,10 +4,16 @@ import edu.epam.fop.web.jpa.entity.Course;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 
+import java.util.List;
+
 public class CourseRepository implements JpaRepository<Course, Long> {
-    // TODO write your code here
     @PersistenceContext
     private EntityManager entityManager;
+
+    public List<Course> getActiveCourses() {
+        return entityManager.createQuery("SELECT e FROM " + getEntityClass().getSimpleName() + " e WHERE e.active", getEntityClass())
+                .getResultList();
+    }
 
     @Override
     public EntityManager getEntityManager() {
