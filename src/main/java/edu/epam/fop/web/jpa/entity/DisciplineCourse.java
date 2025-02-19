@@ -1,7 +1,11 @@
 package edu.epam.fop.web.jpa.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "discipline_course")
 public class DisciplineCourse {

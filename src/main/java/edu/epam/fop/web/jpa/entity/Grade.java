@@ -3,7 +3,11 @@ package edu.epam.fop.web.jpa.entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "grade")
 public class Grade {
@@ -26,37 +30,6 @@ public class Grade {
     @Column(name = "value")
     private Integer value;
 
-    // Getters and setters
-    public GradeId getId() {
-        return id;
-    }
 
-    public void setId(GradeId id) {
-        this.id = id;
-    }
-
-    public Student getStudent() {
-        return student;
-    }
-
-    public void setStudent(Student student) {
-        this.student = student;
-    }
-
-    public Discipline getDiscipline() {
-        return discipline;
-    }
-
-    public void setDiscipline(Discipline discipline) {
-        this.discipline = discipline;
-    }
-
-    public Integer getValue() {
-        return value;
-    }
-
-    public void setValue(Integer value) {
-        this.value = value;
-    }
-}
+   }
 

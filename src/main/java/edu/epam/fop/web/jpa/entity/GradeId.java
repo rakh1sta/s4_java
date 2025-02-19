@@ -2,9 +2,14 @@ package edu.epam.fop.web.jpa.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.io.Serializable;
 import java.util.Objects;
 
+@Getter
+@Setter
 @Embeddable
 public class GradeId implements Serializable {
 
@@ -20,22 +25,6 @@ public class GradeId implements Serializable {
 
     public GradeId(Long studentId, Long disciplineId) {
         this.studentId = studentId;
-        this.disciplineId = disciplineId;
-    }
-
-    public Long getStudentId() {
-        return studentId;
-    }
-
-    public void setStudentId(Long studentId) {
-        this.studentId = studentId;
-    }
-
-    public Long getDisciplineId() {
-        return disciplineId;
-    }
-
-    public void setDisciplineId(Long disciplineId) {
         this.disciplineId = disciplineId;
     }
 
