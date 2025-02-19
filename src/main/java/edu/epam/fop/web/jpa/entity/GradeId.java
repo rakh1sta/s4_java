@@ -21,6 +21,10 @@ public class GradeId implements Serializable {
 
     public GradeId() {}
 
+    public GradeId(Long studentId, Long disciplineId) {
+        this.studentId = studentId;
+        this.disciplineId = disciplineId;
+    }
 
     @Override
     public boolean equals(Object o) {

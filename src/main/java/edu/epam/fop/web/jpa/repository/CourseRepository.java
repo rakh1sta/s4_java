@@ -67,4 +67,5 @@ public class CourseRepository implements JpaRepository<Course, Long> {
 
         return find(courseId);
     }
+
 }
