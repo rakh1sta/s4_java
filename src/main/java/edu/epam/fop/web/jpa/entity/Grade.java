@@ -1,5 +1,62 @@
 package edu.epam.fop.web.jpa.entity;
 
+import jakarta.persistence.*;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+
+@Entity
+@Table(name = "grade")
 public class Grade {
-    // TODO write your code here
+
+    @EmbeddedId
+    private GradeId id;
+
+    @ManyToOne
+    @MapsId("studentId")
+    @JoinColumn(name = "student_id")
+    private Student student;
+
+    @ManyToOne
+    @MapsId("disciplineId")
+    @JoinColumn(name = "discipline_id")
+    private Discipline discipline;
+
+    @Min(0)
+    @Max(100)
+    @Column(name = "value")
+    private Integer value;
+
+    // Getters and setters
+    public GradeId getId() {
+        return id;
+    }
+
+    public void setId(GradeId id) {
+        this.id = id;
+    }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
+    public Discipline getDiscipline() {
+        return discipline;
+    }
+
+    public void setDiscipline(Discipline discipline) {
+        this.discipline = discipline;
+    }
+
+    public Integer getValue() {
+        return value;
+    }
+
+    public void setValue(Integer value) {
+        this.value = value;
+    }
 }
+
