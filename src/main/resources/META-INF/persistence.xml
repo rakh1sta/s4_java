@@ -12,9 +12,9 @@
         <properties>
             <!-- JDBC connection properties -->
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
-            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:55432/mydatabase"/>
-            <property name="javax.persistence.jdbc.user" value="myuser"/>
-            <property name="javax.persistence.jdbc.password" value="secret"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/s4_java"/>
+            <property name="javax.persistence.jdbc.user" value="postgres"/>
+            <property name="javax.persistence.jdbc.password" value="1303"/>
 
             <!-- Hibernate properties -->
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>

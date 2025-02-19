@@ -2,6 +2,8 @@ package edu.epam.fop.web.jpa.repository;
 
 import edu.epam.fop.web.jpa.entity.Course;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
 import jakarta.persistence.PersistenceContext;
 
 import java.time.LocalDate;
@@ -12,19 +14,18 @@ public class CourseRepository implements JpaRepository<Course, Long> {
     @PersistenceContext
     private EntityManager entityManager;
 
+    public EntityManager getEntityManager() {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("my-persistence-unit");
+        return emf.createEntityManager();
+    }
     public boolean deactivateCourse(Long id) {
         Course entity = find(id);
         if (entity != null) {
             entity.setActive(false);
-            entityManager.merge(entity);
+            getEntityManager().merge(entity);
             return true;
         }
         return false;
-    }
-
-    @Override
-    public EntityManager getEntityManager() {
-        return entityManager;
     }
 
     @Override
@@ -38,12 +39,12 @@ public class CourseRepository implements JpaRepository<Course, Long> {
     }
 
     public List<Course> findAllActive() {
-        return entityManager.createQuery("SELECT e FROM Course e WHERE e.active", getEntityClass())
+        return getEntityManager().createQuery("SELECT e FROM Course e WHERE e.active", getEntityClass())
                 .getResultList();
     }
 
     public List<Course> printFutureCourses() {
-        return entityManager.createQuery("SELECT c FROM Course c WHERE c.startAt > :today", getEntityClass())
+        return getEntityManager().createQuery("SELECT c FROM Course c WHERE c.startAt > :today", getEntityClass())
                 .setParameter("today", LocalDate.now())
                 .getResultList();
     }
@@ -53,7 +54,7 @@ public class CourseRepository implements JpaRepository<Course, Long> {
         if (course == null)
             throw new IllegalArgumentException("Course with ID " + courseId + " not found.");
         course.setStartAt(newStartDate);
-        entityManager.merge(course);
+        getEntityManager().merge(course);
         return find(courseId);
     }
 
@@ -62,7 +63,7 @@ public class CourseRepository implements JpaRepository<Course, Long> {
         if (course == null)
             throw new IllegalArgumentException("Course with ID " + courseId + " not found.");
         course.setEndAt(newEndDate);
-        entityManager.merge(course);
+        getEntityManager().merge(course);
 
         return find(courseId);
     }
